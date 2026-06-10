@@ -1,0 +1,61 @@
+name: Task 3 of Workflow 2 - Multi-platform testing workflow
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  ubuntu-job:
+    name: Test on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print Ubuntu information
+        run: echo "Running on Ubuntu"
+
+      - name: Show Linux system information
+        run: uname -a
+
+      - name: Create and display Ubuntu file
+        run: |
+          echo "This file was created on Ubuntu" > ubuntu-file.txt
+          cat ubuntu-file.txt
+
+  windows-job:
+    name: Test on Windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print Windows information
+        run: echo "Running on Windows"
+
+      - name: Show Windows system information
+        run: systeminfo
+
+      - name: Create and display Windows file
+        run: |
+          echo "This file was created on Windows" > windows-file.txt
+          type windows-file.txt
+
+  macos-job:
+    name: Test on macOS
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Print macOS information
+        run: echo "Running on macOS"
+
+      - name: Show macOS system information
+        run: uname -a
+
+      - name: Create and display macOS file
+        run: |
+          echo "This file was created on macOS" > macos-file.txt
+          cat macos-file.txt
